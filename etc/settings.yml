@@ -1,4 +1,8 @@
-use_default_settings: true
+use_default_settings:
+  engines:
+    remove:
+      # Do not use Google (intended to prevent IP bans for bot-like activity)
+      - google
 
 server:
   secret_key: "ffa61f9ada2825f94f0f2a466ade50e602304b0a8ffa406f1a60058cadb84da3"
