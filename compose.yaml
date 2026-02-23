@@ -3,8 +3,10 @@
 services:
   searxng:
     image: searxng/searxng:latest
-    ports:
-      - "${PORT:-8080}:8080"
+    environment:
+      - FORWARDED_ALLOW_IPS=*
     volumes:
       - ./etc:/etc/searxng
+    ports:
+      - "${PORT:-8080}:8080"
     restart: unless-stopped

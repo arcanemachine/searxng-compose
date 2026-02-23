@@ -1,14 +1,38 @@
 use_default_settings:
   engines:
     remove:
+      - duckduckgo
+      - duckduckgo definitions
+      - wikidata
       # Do not use Google (intended to prevent IP bans for bot-like activity)
       - google
+      # These require Tor, which is not configured by default
+      - ahmia
+      - torch
+
+engines:
+  # - name: duckduckgo
+  #   engine: duckduckgo
+  #   timeout: 6.0
+  #   suspended_time: 86400  # back off for 24 hours after a CAPTCHA
+  # - name: duckduckgo weather
+  #   engine: duckduckgo_weather
+  #   timeout: 6.0
+  #   suspended_time: 86400  # back off for 24 hours after a CAPTCHA
+  - name: wikidata
+    engine: wikidata
+    timeout: 6.0
 
 server:
-  secret_key: "ffa61f9ada2825f94f0f2a466ade50e602304b0a8ffa406f1a60058cadb84da3"
+  secret_key: "ffa61f9aa225f94ff2a46ade5e68234b0a8ffa407f1a60658cadb84da3"
   limiter: false
 
 search:
   formats:
     - html
     - json
+  suspended_times:
+    SearxEngineCaptcha: 86400 # 24h backoff on CAPTCHA (default is 86400)
+    SearxEngineTooManyRequests: 3600 # 1h backoff on 429 (default is 3660)
+    cf_SearxEngineCaptcha: 86400 # Cloudflare-protected CAPTCHA
+    cf_SearxEngineTooManyRequests: 1800
