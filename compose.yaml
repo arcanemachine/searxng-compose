@@ -1,0 +1,10 @@
+---
+
+services:
+  searxng:
+    image: searxng/searxng:latest
+    ports:
+      - "${PORT:-8080}:8080"
+    volumes:
+      - ./etc:/etc/searxng
+    restart: unless-stopped
