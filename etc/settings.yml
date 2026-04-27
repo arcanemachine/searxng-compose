@@ -31,8 +31,8 @@ search:
     - html
     - json
   suspended_times:
-    SearxEngineAccessDenied: 3600 # 24h backoff on 403
-    SearxEngineCaptcha: 3600 # 24h backoff on CAPTCHA
-    SearxEngineTooManyRequests: 30 # 1h backoff on 429
+    SearxEngineAccessDenied: 3600 # 1h backoff on 403
+    SearxEngineCaptcha: 3600 # 1 backoff on CAPTCHA
+    SearxEngineTooManyRequests: 30 # 1m backoff on 429
     cf_SearxEngineCaptcha: 86400 # Cloudflare-protected CAPTCHA
     cf_SearxEngineTooManyRequests: 1800
