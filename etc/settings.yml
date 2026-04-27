@@ -3,7 +3,6 @@ use_default_settings:
     remove:
       - duckduckgo
       - duckduckgo definitions
-      - wikidata
       # Do not use Google (intended to prevent IP bans for bot-like activity)
       - google
       # These require Tor, which is not configured by default
@@ -32,7 +31,8 @@ search:
     - html
     - json
   suspended_times:
-    SearxEngineCaptcha: 86400 # 24h backoff on CAPTCHA (default is 86400)
-    SearxEngineTooManyRequests: 3600 # 1h backoff on 429 (default is 3660)
+    SearxEngineAccessDenied: 3600 # 24h backoff on 403
+    SearxEngineCaptcha: 3600 # 24h backoff on CAPTCHA
+    SearxEngineTooManyRequests: 30 # 1h backoff on 429
     cf_SearxEngineCaptcha: 86400 # Cloudflare-protected CAPTCHA
     cf_SearxEngineTooManyRequests: 1800
